@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+////////////////////////////////////////////////////////////////////////////////////
+//  pilhaEstatica.h
+//  Stacks
+#ifndef pilhaEstatica_h
+#define pilhaEstatica_h
+#define MAXTAM 100
+/* tipo abstrato para item, que será inserido na pilha */
+typedef struct {
+    int chave;
+    /* podemos adicionar mais coisas aqui */
+} Objeto;
+
+/* tipo abstrato de pilha */
+typedef struct {
+    Objeto array[MAXTAM];
+    int topo;
+} pilhaEstatica;
+
+
+/* funções de manipulação */
+void iniciaPilha(pilhaEstatica *pilha);
+bool estaVazia(pilhaEstatica *pilha);
+bool estaCheia(pilhaEstatica *pilha) ;
+void empilha(Objeto item, pilhaEstatica *pilha);
+void desempilha(Objeto *item, pilhaEstatica *pilha);
+int tamanhoPilha(pilhaEstatica *pilha);
+Objeto topo(pilhaEstatica *pilha);
+void imprimePilha(pilhaEstatica *pilha);
+
+#endif /* pilhaEstatica_h */
+////////////////////////////////////////////////////////////////////////////////////
+
+void iniciaPilha(pilhaEstatica *pilha) {
+    Objeto obj;
+    obj.chave = 0;
+    for(int i = 0; i<MAXTAM; i++){
+        pilha->array[i] = obj;
+    }
+    pilha->topo = 0;
+}
+
+bool estaVazia(pilhaEstatica *pilha) {
+    if(pilha->topo = 0)
+        return true;
+}
+
+bool estaCheia(pilhaEstatica *pilha) {
+    if(pilha->topo = MAXTAM)
+        return true;
+}
+
+void empilha(Objeto item, pilhaEstatica *pilha) {
+    // adicione seu codigo aqui
+}
+
+void desempilha(Objeto *item, pilhaEstatica *pilha) {
+    // adicione seu codigo aqui
+}
+
+int tamanhoPilha(pilhaEstatica *pilha) {
+    // adicione seu codigo aqui
+}
+
+Objeto topo(pilhaEstatica *pilha) {
+    // adicione seu codigo aqui
+}
+
+void imprimePilha(pilhaEstatica *pilha) {
+    // adicione seu codigo aqui
+}
+/////////////////////////////////////////////////////////////////////////////////////
+
+int main() {
+    pilhaEstatica pilha;
+    iniciaPilha(&pilha);
+    return 0;
+}
