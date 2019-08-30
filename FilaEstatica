@@ -46,7 +46,7 @@ if(!estaCheia(p)){
 }
 }
 
-void dequeue(FilaEstatica *p){
+objeto dequeue(FilaEstatica *p){
     objeto aux;
     if(!estaVazia(p)){
         aux = p->array[p->comeco];
@@ -58,6 +58,14 @@ void dequeue(FilaEstatica *p){
     }
 }
 
+void printaae(FilaEstatica *p) {
+    for (int i = p->comeco; i != p->fim; i++) {
+        if (i == MAXTAM)
+            i = 0;
+
+        printf("%i", p->array[i].key);
+    }
+}
 int main() {
 
 FilaEstatica *p = NULL;
@@ -72,6 +80,8 @@ dequeue(p);
 aux.key = 8;
 enqueue(aux, p);
 dequeue(p);
+
+printaae(p);
 
     return 0;
 }
