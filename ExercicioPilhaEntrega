@@ -51,6 +51,7 @@ int TPilha_Desempilha(TPilha *p) {
 
 int PilhaEstatica(FILE *arq) {
     TPilha *x = (TPilha *) malloc(sizeof (TPilha));
+    TPilha_Inicia(x);
     FILE *arqs = NULL;
     int p;
     int contador = 0;
