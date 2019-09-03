@@ -1,7 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <stdbool.h>
 #define MAXTAM 100
+////////////////////////////////////////////////////////////////////////////////
+typedef struct {
+    int chave;
+} Objeto;
+
+typedef struct NoPilha *PtrNoPilha;
+
+typedef struct NoPilha{
+  Objeto obj;
+  PtrNoPilha proximo;
+} NoPilha;
+
+typedef struct {
+  PtrNoPilha topo;
+  int tamanho;
+} PilhaDinamica;
+
+void iniciaPilha(PilhaDinamica *p);
+bool estaVazia(PilhaDinamica *p);
+void empilha(Objeto obj, PilhaDinamica *p);
+void desempilha(PilhaDinamica *p, Objeto *obj);
+int tamanhoPilha(PilhaDinamica *p);
+void topo(PilhaDinamica *p, Objeto *obj);
+void imprimePilha(PilhaDinamica *p);
+
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+
 
 typedef struct {
     int Item[MAXTAM];
@@ -53,6 +82,7 @@ int PilhaEstatica(FILE *arq) {
     TPilha *x = (TPilha *) malloc(sizeof (TPilha));
     TPilha_Inicia(x);
     FILE *arqs = NULL;
+    arqs = fopen("saida.txt", "w");
     int p;
     int contador = 0;
     while (feof(arq) == 0) {
@@ -69,6 +99,8 @@ int PilhaEstatica(FILE *arq) {
             contador--;
         }
     }
+    fclose(arq);
+    fclose(arqs);
 }
 ////////////////////////////////////////////////////////////////////////////////
 
