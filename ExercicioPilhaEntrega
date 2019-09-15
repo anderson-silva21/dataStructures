@@ -29,19 +29,23 @@ bool estaVazia(PilhaDinamica *p){
 }
 
 void empilha(Objeto obj, PilhaDinamica *p){
-    PtrNoPilha  aux;
-    aux = (PtrNoPilha)malloc(sizeof(NoPilha));
+    PtrNoPilha  aux = NULL;
+    aux = (NoPilha*)malloc(sizeof(PtrNoPilha));
+    aux->obj = obj;
+    aux->proximo = p->topo;
+    p->topo = aux;
     p->tamanho++;
 }
 
-void desempilha(PilhaDinamica *p, Objeto *obj){
+void desempilha(PilhaDinamica *p, Objeto *obj, FILE *arqs){
     if(!estaVazia(p)){
         PtrNoPilha aux = NULL;
         aux = p->topo;
         *obj = p->topo->obj;
         p->topo = p->topo->proximo;
-        free(aux);
         p->tamanho--;
+        fprintf(arqs, "%p", aux);
+        free(aux);
     }else{
         printf("DEU ERRO IRMAO\n");
     }
@@ -51,10 +55,26 @@ int tamanhoPilha(PilhaDinamica *p){
     return(p->tamanho);
 }
 
-void topo(PilhaDinamica *p, Objeto *obj);
-void imprimePilha(PilhaDinamica *p);
-////////////////////////////////////////////////////////////////////////////////
+void topo(PilhaDinamica *p, Objeto *obj){
+    if(!estaVazia(p)){
+    printf("topo = %i\n", p->topo->obj.chave);
+    }else{
+        printf("NAO TEM NADA LEK\n");
+    }
+}
+void imprimePilha(PilhaDinamica *p){
+    if(estaVazia(p)){
+        printf("NAO TEM NADA LEK\n");
+    }else{
+        printf("pilha: ");
+        while(p != NULL){
+            printf("%i", p->topo->obj.chave);
+            p->topo = p->topo-1;
+        }
+    }
+}
 
+////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 typedef struct {
     int Item[MAXTAM];
@@ -144,10 +164,12 @@ int PilhaDInamica(FILE *arq) {
             contador++;
         }
         while (contador != 0){
-            int a = desempilha(g, );
-            fprintf(arqs, "%d", a);
+            desempilha(g, &obj, arqs);
+            contador--;
         }
     }
+    fclose(arq);
+    fclose(arqs);
 }
 ////////////////////////////////////////////////////////////////////////////////
 int main(int argc, char** argv) {
