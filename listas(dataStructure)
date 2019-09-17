@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+typedef struct {
+    int chave;
+} Objeto;
+
+typedef struct NoLista *PtrNoLista;
+
+typedef struct NoLista {
+    Objeto obj;
+    PtrNoLista prox;
+} NoLista;
+
+typedef struct {
+    PtrNoLista inicio;
+    int tamanho;
+} Lista;
+
+void iniciaLista(Lista *list) {
+    list->inicio = NULL;
+    list->tamanho = 0;
+
+}
+
+bool estaVazia(Lista *list) {
+    return (list->tamanho == 0);
+}
+
+void inserir(Lista *list, Objeto x) {
+    PtrNoLista novo;
+    novo = (PtrNoLista) malloc(sizeof(NoLista));
+    novo->obj = x;
+    printf("Inserindo o elemento: %d\n", x.chave);
+    if (estaVazia(list) || x.chave < list->inicio->obj.chave) {
+        novo->prox = list->inicio;
+        list->inicio = novo;
+        list->tamanho++;
+    } else {
+        PtrNoLista aux;
+        aux = list->inicio;
+        while (aux->prox != NULL && x.chave > aux->prox->obj.chave) {
+            aux = aux->prox;
+        }
+        novo->prox = aux->prox;
+        list->tamanho++;
+        aux->prox = novo;
+    }
+}
+
+void imprimirLista(Lista *list) {
+    if (estaVazia(list)) {
+        printf("TA VAZIO LEK, VAI IMPRIMIR OQ?");
+
+    } else {
+        PtrNoLista aux;
+        while (aux != NULL) {
+            printf("%i", aux->obj.chave);
+
+        }
+    }
+}
