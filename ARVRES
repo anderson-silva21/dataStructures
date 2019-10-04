@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+typedef struct{
+    int key;
+} Object;
+
+typedef struct NodeTree *PtrTree;
+
+typedef struct NodeTree {
+    Object element;
+    PtrTree left;
+    PtrTree right;
+} NodeTree;
+
+int sizeTree(PtrTree *node);
+int maxDepth(PtrTree *node);
+
+void initTree(PtrTree *node){
+    *node = NULL;
+}
+
+bool isEmpty(PtrTree *node){
+    return(*node == NULL);
+}
+
+void destroyTree(PtrTree *node);
+
+void preOrder(PtrTree *node){
+    if(*node = NULL) return;
+    printf("%d", (*node)->element.key);
+    preOrder((*node)->left);
+    preOrder((*node)->right);
+}
+
+void posOrder(PtrTree *node){
+    if(*node == NULL) return;
+    posOrder((*node)->left);
+    posOrder((*node)->right);
+    printf("%d", (*node)->element.key);
+}
+
+void inOrder(PtrTree *node){
+    if(*node ==  NULL) return;
+    inOrder((*node)->left);
+    printf("%d", (*node)->element.key);
+    inOrder((*node)->right);
+}
+
+bool insertItem(PtrTree *node, Object x){
+    if(isEmpty(node)){
+
+    }
+}
+
+bool findItem(PtrTree *node, int key, Object *ret){
+    if(*node == NULL)
+        return (false);
+    if((*node)->element.key == key)
+        return (true);
+    if(key < (*node)->element.key) {
+        (*node)->left;
+    }else{
+        (*node)->right;
+    }
+}
+
+bool removeItem(PtrTree *node, int key);
+PtrTree maximum(PtrTree *node);
+PtrTree maximumIterative(PtrTree *node){
+    while((*node) != NULL){
+        (*node)->right;
+    }
+    printf("%d", (*node)->element.key);
+}
+
+PtrTree minimum(PtrTree *node);
+
+PtrTree minimumIterative(PtrTree *node){
+    while((*node) != NULL){
+        (*node)->left;
+    }
+    printf("%d", (*node)->element.key);
+}
+
+PtrTree getMinAux (PtrTree *node); //usado na remoção
+PtrTree getMaxAux (PtrTree *node); //usado na remoção
+
+int main(){
+
+    return 0;
+}
