@@ -14,6 +14,8 @@ typedef struct NodeTree {
     PtrTree right;
 } NodeTree;
 
+
+
 int sizeTree(PtrTree *node);
 int maxDepth(PtrTree *node);
 
@@ -54,7 +56,7 @@ bool insertItem(PtrTree *node, Object x){
     }
 }
 
-bool findItem(PtrTree *node, int key, Object *ret){
+bool findItem(PtrTree *node, int key){
     if(*node == NULL)
         return (false);
     if((*node)->element.key == key)
@@ -71,12 +73,12 @@ PtrTree getMinAux (PtrTree *node){  //usado na remoção
 
 PtrTree getMaxAux (PtrTree *node); //usado na remoção, nem vou usar hehe
 
-bool removeItem(PtrTree *node, Object x){
+bool removeItem(PtrTree *node, int x){
     ////////////////////////////////////////////////////////////////////////////
     if((*node)== NULL)
         return (false);
     ////////////////////////////////////////////////////////////////////////////
-    if((*node)->element.key == x.key){
+    if((*node)->element.key == x){
         if((*node)->left == NULL)  // case 1
             (*node) = (*node)->right;
         else if((*node)->right == NULL && (*node)->left == NULL) // case 2
@@ -84,13 +86,13 @@ bool removeItem(PtrTree *node, Object x){
         else if((*node)->right == NULL) // case 3
             (*node) = (*node)->left;
         else // ((*node)->right != NULL && (*node)->left != NULL) // case 4 // Não precisa de condição para o caso porque foi o que sobrou.
-            (*node) = getMinAux(&((*node)->right));
+            (*node) = getMinAux((&(*node)->right));
         return (true);
     }
     ////////////////////////////////////////////////////////////////////////////
-    if((*node)->element.key > x.key) {
+    if((*node)->element.key > x) {
         return (removeItem(&(*node)->left, x));
-    }else if((*node)->element.key < x.key){
+    }else if((*node)->element.key < x){
         return (removeItem(&(*node)->right, x));
     }
 }
@@ -122,6 +124,18 @@ PtrTree minimumIterative(PtrTree *node){
 
 
 int main(){
-
+    PtrTree node;
+    int key = 9;
+    Object *ret;
+    findItem(&node, key);
+    preOrder(&node);
+    posOrder(&node);
+    inOrder(&node);
+    maximumIterative(&node);
+    minimumIterative(&node);
+    maximum(&node);
+    minimum(&node);
+    int keyr = 8;
+    removeItem(&node, keyr);
     return 0;
 }
