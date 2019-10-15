@@ -66,12 +66,13 @@ bool findItem(PtrTree *node, int key, Object *ret){
     }
 }
 PtrTree getMinAux (PtrTree *node){  //usado na remoção
-    
-} 
+    return((*node)->right);
+}
 
 PtrTree getMaxAux (PtrTree *node); //usado na remoção, nem vou usar hehe
 
 bool removeItem(PtrTree *node, Object x){
+    ////////////////////////////////////////////////////////////////////////////
     if((*node)== NULL)
         return (false);
     ////////////////////////////////////////////////////////////////////////////
