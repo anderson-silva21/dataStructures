@@ -14,9 +14,8 @@ typedef struct NodeTree {
     PtrTree right;
 } NodeTree;
 
-
-
 int sizeTree(PtrTree *node);
+
 int maxDepth(PtrTree *node);
 
 void initTree(PtrTree *node){
@@ -97,7 +96,6 @@ bool removeItem(PtrTree *node, int x){
     }
 }
 
-
 PtrTree maximum(PtrTree *node){
     return(maximum(&(*node)->right));
 }
@@ -119,9 +117,6 @@ PtrTree minimumIterative(PtrTree *node){
     }
     printf("%d", (*node)->element.key);
 }
-
-
-
 
 int main(){
     PtrTree node;
