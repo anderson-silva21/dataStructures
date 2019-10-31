@@ -38,6 +38,16 @@ lista = [2, 1, 4, 5]
 dobra(lista)
 print(lista)
 ##################################### Soma
+quadrado = [item**2 for item in range(11)]
+print(quadrado)
+#######################################Itens da lista ao quadrado
+pares = [item for item in range(21) if item % 2 == 0]
+print(pares)
+#######################################Itens da lista pares
+similar = [x for x in quadrado if x in pares]
+print(similar)
+#######################################Similar
+
 soma(1, 2, 3, 4, 5)
 soma(-9, -3, 8)
 soma(4)
