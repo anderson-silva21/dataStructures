@@ -50,13 +50,13 @@ b = -3
 c = -10
 x, y = equacao2grau(a, b ,c)
 print(f'As raizes são {x} e {y}')
-#####################################
+#####################################Itens da lista ao quadrado
 quadrado = [item**2 for item in range(11)]
 print(quadrado)
-#######################################Itens da lista ao quadrado
+#######################################Itens da lista pares
 pares = [item for item in range(21) if item % 2 == 0]
 print(pares)
-#######################################Itens da lista pares
+#######################################Similar
 similar = [x for x in quadrado if x in pares]
 print(similar)
-#######################################Similar
+#######################################
